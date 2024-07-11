@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:tolet_app/pages/home_page.dart';
 
 void main() {
@@ -10,14 +12,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return const ScreenUtilInit(
+      splitScreenMode: true,
+      minTextAdapt: true,
+      child: GetMaterialApp(
+        title: 'Flutter Demo',
+        // darkTheme: ThemeData.dark(),
+        // home: HomePage(),
       ),
-      home: const HomePage(),
     );
   }
 }
