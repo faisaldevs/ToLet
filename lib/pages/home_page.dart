@@ -32,6 +32,18 @@ class HomePage extends StatelessWidget {
                    children: [
                      OutlinedButton(
                        onPressed: () {
+                         showModalBottomSheet(
+                           context: context,
+                           builder: (context) {
+                             return Container(
+                               color: Colors.white,
+                               height: 200,
+                               child: Center(
+                                 child: Text('This is a modal bottom sheet'),
+                               ),
+                             );
+                           },
+                         );
                        },
                        style: OutlinedButton.styleFrom(
                          // padding: EdgeInsets.all(value),
@@ -50,6 +62,39 @@ class HomePage extends StatelessWidget {
                      ),
                      OutlinedButton(
                        onPressed: () {
+                         showModalBottomSheet(
+                           context: context,
+                           shape: RoundedRectangleBorder(
+                             borderRadius: BorderRadius.vertical(
+                               top: Radius.circular(25.0),
+                             ),
+                           ),
+                           backgroundColor: Colors.blueAccent,
+                           builder: (context) {
+                             return Container(
+                               padding: EdgeInsets.all(16.0),
+                               height: 300,
+                               child: Column(
+                                 children: [
+                                   Text(
+                                     'Custom Bottom Sheet',
+                                     style: TextStyle(
+                                       fontSize: 24,
+                                       color: Colors.white,
+                                     ),
+                                   ),
+                                   SizedBox(height: 10),
+                                   ElevatedButton(
+                                     onPressed: () {
+                                       Navigator.pop(context);
+                                     },
+                                     child: Text('Close'),
+                                   ),
+                                 ],
+                               ),
+                             );
+                           },
+                         );
                          // Define the action to be performed when the button is pressed
                        },
                        style: OutlinedButton.styleFrom(
