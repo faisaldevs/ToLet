@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
                              return Container(
                                color: Colors.white,
                                height: 200,
-                               child: Center(
+                               child: const Center(
                                  child: Text('This is a modal bottom sheet'),
                                ),
                              );
@@ -64,7 +64,7 @@ class HomePage extends StatelessWidget {
                        onPressed: () {
                          showModalBottomSheet(
                            context: context,
-                           shape: RoundedRectangleBorder(
+                           shape: const RoundedRectangleBorder(
                              borderRadius: BorderRadius.vertical(
                                top: Radius.circular(25.0),
                              ),
@@ -72,23 +72,23 @@ class HomePage extends StatelessWidget {
                            backgroundColor: Colors.blueAccent,
                            builder: (context) {
                              return Container(
-                               padding: EdgeInsets.all(16.0),
+                               padding: const EdgeInsets.all(16.0),
                                height: 300,
                                child: Column(
                                  children: [
-                                   Text(
+                                   const Text(
                                      'Custom Bottom Sheet',
                                      style: TextStyle(
                                        fontSize: 24,
                                        color: Colors.white,
                                      ),
                                    ),
-                                   SizedBox(height: 10),
+                                   const SizedBox(height: 10),
                                    ElevatedButton(
                                      onPressed: () {
                                        Navigator.pop(context);
                                      },
-                                     child: Text('Close'),
+                                     child: const Text('Close'),
                                    ),
                                  ],
                                ),
