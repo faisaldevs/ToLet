@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         title: 'Flutter Demo',
         // darkTheme: ThemeData.dark(),
-        // home: HomePage(),
+        home: HomePage(),
       ),
     );
   }
