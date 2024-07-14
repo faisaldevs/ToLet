@@ -1,71 +1,51 @@
-import 'package:flutter/material.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: RadioButtonDemo(),
-    );
-  }
-}
-
-class RadioButtonDemo extends StatefulWidget {
-  @override
-  _RadioButtonDemoState createState() => _RadioButtonDemoState();
-}
-
-class _RadioButtonDemoState extends State<RadioButtonDemo> {
-  String _selectedOption = 'Family';
-
-  void _handleRadioValueChange(String? value) {
-    setState(() {
-      _selectedOption = value!;
-      print(_selectedOption); // Print the selected button name
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Radio Button Demo'),
-      ),
-      body: Column(
-        children: <Widget>[
-          RadioListTile<String>(
-            title: const Text('Family'),
-            value: 'Family',
-            groupValue: _selectedOption,
-            onChanged: _handleRadioValueChange,
-          ),
-          RadioListTile<String>(
-            title: const Text('Bachelor'),
-            value: 'Bachelor',
-            groupValue: _selectedOption,
-            onChanged: _handleRadioValueChange,
-          ),
-          RadioListTile<String>(
-            title: const Text('Office'),
-            value: 'Office',
-            groupValue: _selectedOption,
-            onChanged: _handleRadioValueChange,
-          ),
-          RadioListTile<String>(
-            title: const Text('Shop'),
-            value: 'Shop',
-            groupValue: _selectedOption,
-            onChanged: _handleRadioValueChange,
-          ),
-          RadioListTile<String>(
-            title: const Text('Sublet'),
-            value: 'Sublet',
-            groupValue: _selectedOption,
-            onChanged: _handleRadioValueChange,
-          ),
-        ],
-      ),
-    );
-  }
-}
+// import 'package:flutter/material.dart';
+// import 'package:flutter/rendering.dart';
+// import 'package:scroll_to_hide/scroll_to_hide.dart';
+//
+// void main() => runApp(MyApp());
+//
+// class MyApp extends StatefulWidget {
+//   @override
+//   State<MyApp> createState() => _MyAppState();
+// }
+//
+// class _MyAppState extends State<MyApp> {
+//   late ScrollController controller;
+//
+//   @override
+//   void initState() {
+//     // TODO: implement initState
+//     super.initState();
+//     controller = ScrollController();-
+//
+//   }
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('Hide Navigation on Scroll'),
+//         ),
+//         body: ListView.builder(
+//           controller: controller,
+//           itemCount: 50,
+//           itemBuilder: (BuildContext context, int index) {
+//             return ListTile(
+//               title: Text('Item $index'),
+//             );
+//           },
+//         ),
+//         bottomNavigationBar: ScrollToHide(
+//           scrollController: controller,hideDirection: Axis.vertical,
+//           child: BottomNavigationBar(items: [
+//             BottomNavigationBarItem(icon: Icon(Icons.home),label: "home"),
+//             BottomNavigationBarItem(icon: Icon(Icons.feed),label: "feed"),
+//             BottomNavigationBarItem(icon: Icon(Icons.verified_user),label: "profile"),
+//           ]),
+//         ),
+//       ),
+//     );
+//   }
+// }
+//
+//
