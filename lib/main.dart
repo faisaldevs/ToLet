@@ -19,10 +19,10 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'ToLet',
         // darkTheme: ThemeData.dark(),
-        // home: HomePage(),
-        home: DetailsPage(),
+        home: HomePage(),
+        // home: DetailsPage(),
       ),
     );
   }

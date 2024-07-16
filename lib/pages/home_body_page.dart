@@ -1,4 +1,4 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tolet_app/pages/details_page.dart';
@@ -13,19 +13,16 @@ class HomeBodyPage extends StatefulWidget {
 
 class _HomePageState extends State<HomeBodyPage> {
   late ScrollController controller;
-  // int _page = 1;
-  // List pages = [
-  //   const HomePage(),
-  //   const ProfilePage(),
-  // ];
-  final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+  // final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   String selectedOption = 'All';
   String sortByOption = "Newest";
 
   void handleRadioValueChange(String? value) {
     setState(() {
       selectedOption = value!;
-      print(selectedOption);
+      if (kDebugMode) {
+        print(selectedOption);
+      }
       Navigator.pop(context);
     });
   }
@@ -33,30 +30,30 @@ class _HomePageState extends State<HomeBodyPage> {
   void sortByOptionValueChange(String? value) {
     setState(() {
       sortByOption = value!;
-      print(sortByOption);
+      if (kDebugMode) {
+        print(sortByOption);
+      }
       Navigator.pop(context);
     });
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller = ScrollController();
   }
+
   @override
   void dispose() {
-    // TODO: implement dispose
-    super.dispose();
     controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black87,
-      drawer: drawer(),
-      // drawerScrimColor: Colors.white,
+      drawer: _drawer(),
       body: SafeArea(
         child: CustomScrollView(
           controller: controller,
@@ -92,13 +89,10 @@ class _HomePageState extends State<HomeBodyPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             OutlinedButton(
-                              onPressed: () => _category(context,
-                                  selectedOption, handleRadioValueChange),
+                              onPressed: () => _category(context, selectedOption, handleRadioValueChange),
                               style: OutlinedButton.styleFrom(
                                 foregroundColor: Colors.white,
-                                side: const BorderSide(
-                                  color: Colors.white,
-                                ),
+                                side: const BorderSide(color: Colors.white),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -109,7 +103,6 @@ class _HomePageState extends State<HomeBodyPage> {
                                     Icons.tune_outlined,
                                     size: 20,
                                     color: Colors.white60,
-                                    weight: 300,
                                   ),
                                   Text(
                                     'ক্যাটাগরি',
@@ -133,7 +126,6 @@ class _HomePageState extends State<HomeBodyPage> {
                                     Icons.place_outlined,
                                     size: 20,
                                     color: Colors.white60,
-                                    weight: 300,
                                   ),
                                   Text(
                                     'লোকেশন',
@@ -157,7 +149,6 @@ class _HomePageState extends State<HomeBodyPage> {
                                     Icons.sort,
                                     size: 20,
                                     color: Colors.white60,
-                                    weight: 300,
                                   ),
                                   Text(
                                     'অন্যান্য',
@@ -185,7 +176,7 @@ class _HomePageState extends State<HomeBodyPage> {
               delegate: SliverChildBuilderDelegate(
                     (context, index) {
                   return GestureDetector(
-                    onTap: () => Get.to(DetailsPage()),
+                    onTap: () => Get.to(() => const DetailsPage(), curve: Curves.linearToEaseOut,duration: const Duration(milliseconds: 400)),
                     child: Card(
                       elevation: 4,
                       margin: const EdgeInsets.all(4),
@@ -198,17 +189,16 @@ class _HomePageState extends State<HomeBodyPage> {
                             child: Stack(
                               children: [
                                 Image.asset(
+                                  "assets/tolet.png",
                                   height: 130,
                                   width: double.infinity,
-                                  "assets/tolet.png",
                                   fit: BoxFit.cover,
                                 ),
                                 Align(
                                   alignment: Alignment.bottomRight,
                                   child: Container(
                                     padding: const EdgeInsets.all(4),
-                                    margin: const EdgeInsets.only(
-                                        right: 4, bottom: 4),
+                                    margin: const EdgeInsets.only(right: 4, bottom: 4),
                                     decoration: BoxDecoration(
                                       color: Colors.black,
                                       borderRadius: BorderRadius.circular(8),
@@ -225,7 +215,7 @@ class _HomePageState extends State<HomeBodyPage> {
                           ),
                           Expanded(
                             child: Container(
-                              width: Get.width,
+                              width: double.infinity,
                               color: Colors.black87,
                               child: const Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -292,7 +282,7 @@ class _HomePageState extends State<HomeBodyPage> {
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.close),
+                    icon: const Icon(Icons.close, color: Colors.white60),
                     onPressed: () {
                       Navigator.pop(context);
                     },
@@ -304,12 +294,8 @@ class _HomePageState extends State<HomeBodyPage> {
                 children: <Widget>[
                   RadioListTile<String>(
                     title: sortByOption == "Newest"
-                        ? const Text('Newest',
-                        style: TextStyle(color: Colors.white))
-                        : const Text(
-                      'Newest',
-                      style: TextStyle(color: Colors.white60),
-                    ),
+                        ? const Text('Newest', style: TextStyle(color: Colors.white))
+                        : const Text('Newest', style: TextStyle(color: Colors.white60)),
                     value: 'Newest',
                     groupValue: sortByOption,
                     onChanged: sortByOptionValueChange,
@@ -317,12 +303,8 @@ class _HomePageState extends State<HomeBodyPage> {
                   ),
                   RadioListTile<String>(
                     title: sortByOption == "htl"
-                        ? const Text('Price (High to Low)',
-                        style: TextStyle(color: Colors.white))
-                        : const Text(
-                      'Price (High to Low)',
-                      style: TextStyle(color: Colors.white60),
-                    ),
+                        ? const Text('Price (High to Low)', style: TextStyle(color: Colors.white))
+                        : const Text('Price (High to Low)', style: TextStyle(color: Colors.white60)),
                     value: 'htl',
                     groupValue: sortByOption,
                     onChanged: sortByOptionValueChange,
@@ -330,12 +312,8 @@ class _HomePageState extends State<HomeBodyPage> {
                   ),
                   RadioListTile<String>(
                     title: sortByOption == "lth"
-                        ? const Text('Price (Low to High)',
-                        style: TextStyle(color: Colors.white))
-                        : const Text(
-                      'Price (Low to High)',
-                      style: TextStyle(color: Colors.white60),
-                    ),
+                        ? const Text('Price (Low to High)', style: TextStyle(color: Colors.white))
+                        : const Text('Price (Low to High)', style: TextStyle(color: Colors.white60)),
                     value: 'lth',
                     groupValue: sortByOption,
                     onChanged: sortByOptionValueChange,
@@ -352,9 +330,7 @@ class _HomePageState extends State<HomeBodyPage> {
 
   void _location(BuildContext context) {
     showModalBottomSheet(
-      // isScrollControlled: true,
       backgroundColor: Colors.black,
-
       context: context,
       builder: (BuildContext context) {
         return Container(
@@ -370,150 +346,31 @@ class _HomePageState extends State<HomeBodyPage> {
                     'Select Area',
                     style: TextStyle(
                       fontSize: 18.0,
-                      color: Colors.white54,
+                      color: Colors.white60,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(
-                          Icons.refresh_outlined,
-                          color: Colors.white54,
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.close,
-                          color: Colors.white54,
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ],
-                  )
+                  IconButton(
+                    icon: const Icon(Icons.close, color: Colors.white60),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
                 ],
               ),
               const SizedBox(height: 10.0),
-              DropdownButtonFormField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      borderSide: BorderSide(
-                        color: Colors.white12,
-                      )),
-                  labelText: "Division",
-                  labelStyle: TextStyle(
-                    color: Colors.white,
+              const Column(
+                children: <Widget>[
+                  ListTile(
+                    title: Text('Banani', style: TextStyle(color: Colors.white)),
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(5)),
-                    borderSide: BorderSide(color: Colors.white, width: 2),
+                  ListTile(
+                    title: Text('Uttara', style: TextStyle(color: Colors.white)),
                   ),
-                ),
-                value: null,
-                onChanged: (newValue) {},
-                items: const [
-                  DropdownMenuItem(
-                    value: 1,
-                    child: Text("Text 1"),
+                  ListTile(
+                    title: Text('Mohakhali', style: TextStyle(color: Colors.white)),
                   ),
-                  DropdownMenuItem(
-                    value: 2,
-                    child: Text("Text 2"),
-                  ),
-                  DropdownMenuItem(
-                    value: 3,
-                    child: Text("Text 3"),
-                  ),
-                  DropdownMenuItem(value: 4, child: Text("Text 4")),
                 ],
-              ),
-              const SizedBox(height: 10.0),
-              DropdownButtonFormField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      borderSide: BorderSide(
-                        color: Colors.white12,
-                      )),
-                  labelText: "District",
-                  labelStyle: TextStyle(
-                    color: Colors.white,
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(5)),
-                    borderSide: BorderSide(color: Colors.white, width: 2),
-                  ),
-                ),
-                value: null,
-                onChanged: (newValue) {},
-                items: const [
-                  DropdownMenuItem(
-                    value: 1,
-                    child: Text("Text 1"),
-                  ),
-                  DropdownMenuItem(
-                    value: 2,
-                    child: Text("Text 2"),
-                  ),
-                  DropdownMenuItem(
-                    value: 3,
-                    child: Text("Text 3"),
-                  ),
-                  DropdownMenuItem(value: 4, child: Text("Text 4")),
-                ],
-              ),
-              const SizedBox(height: 10.0),
-              DropdownButtonFormField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      borderSide: BorderSide(
-                        color: Colors.white12,
-                      )),
-                  labelText: "sub district",
-                  labelStyle: TextStyle(
-                    color: Colors.white,
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(5)),
-                    borderSide: BorderSide(color: Colors.white, width: 2),
-                  ),
-                ),
-                value: null,
-                onChanged: (newValue) {},
-                items: const [
-                  DropdownMenuItem(
-                    value: 1,
-                    child: Text("Text 1"),
-                  ),
-                  DropdownMenuItem(
-                    value: 2,
-                    child: Text("Text 2"),
-                  ),
-                  DropdownMenuItem(
-                    value: 3,
-                    child: Text("Text 3"),
-                  ),
-                  DropdownMenuItem(value: 4, child: Text("Text 4")),
-                ],
-              ),
-              const SizedBox(height: 10.0),
-              Align(
-                alignment: Alignment.center,
-                child: SizedBox(
-                  width: 200,
-                  child: ElevatedButton(
-                      onPressed: () {}, child: const Text("Save")),
-                ),
               ),
             ],
           ),
@@ -522,8 +379,7 @@ class _HomePageState extends State<HomeBodyPage> {
     );
   }
 
-  void _category(BuildContext context, String selectedOption,
-      Function(String?) handleRadioValueChange) {
+  void _category(BuildContext context, String selectedOption, void Function(String?) handleRadioValueChange) {
     showModalBottomSheet(
       backgroundColor: Colors.black,
       context: context,
@@ -546,10 +402,7 @@ class _HomePageState extends State<HomeBodyPage> {
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(
-                      Icons.close,
-                      color: Colors.white60,
-                    ),
+                    icon: const Icon(Icons.close, color: Colors.white60),
                     onPressed: () {
                       Navigator.pop(context);
                     },
@@ -561,70 +414,27 @@ class _HomePageState extends State<HomeBodyPage> {
                 children: <Widget>[
                   RadioListTile<String>(
                     title: selectedOption == "All"
-                        ? const Text('All',
-                        style: TextStyle(color: Colors.white))
-                        : const Text('All',
-                        style: TextStyle(color: Colors.white60)),
+                        ? const Text('All', style: TextStyle(color: Colors.white))
+                        : const Text('All', style: TextStyle(color: Colors.white60)),
                     value: 'All',
                     groupValue: selectedOption,
                     onChanged: handleRadioValueChange,
                     activeColor: Colors.white,
                   ),
                   RadioListTile<String>(
-                    title: selectedOption == "Family"
-                        ? const Text('Family',
-                        style: TextStyle(color: Colors.white))
-                        : const Text('Family',
-                        style: TextStyle(color: Colors.white60)),
-                    value: 'Family',
-                    groupValue: selectedOption,
-                    onChanged: handleRadioValueChange,
-                    activeColor: Colors.white,
-                  ),
-                  RadioListTile<String>(
-                    title: selectedOption == "Bachelor"
-                        ? const Text('Bachelor',
-                        style: TextStyle(color: Colors.white))
-                        : const Text('Bachelor',
-                        style: TextStyle(color: Colors.white60)),
-                    value: 'Bachelor',
-                    groupValue: selectedOption,
-                    onChanged: handleRadioValueChange,
-                    activeColor: Colors.white,
-                  ),
-                  RadioListTile<String>(
-                    title: selectedOption == "Sublet"
-                        ? const Text('Sublet',
-                        style: TextStyle(color: Colors.white))
-                        : const Text('Sublet',
-                        style: TextStyle(color: Colors.white60)),
-                    value: 'Sublet',
-                    groupValue: selectedOption,
-                    onChanged: handleRadioValueChange,
-                    activeColor: Colors.white,
-                  ),
-                  RadioListTile<String>(
                     title: selectedOption == "Office"
-                        ? const Text('Office',
-                        style: TextStyle(color: Colors.white))
-                        : const Text(
-                      'Office',
-                      style: TextStyle(color: Colors.white60),
-                    ),
+                        ? const Text('Office', style: TextStyle(color: Colors.white))
+                        : const Text('Office', style: TextStyle(color: Colors.white60)),
                     value: 'Office',
                     groupValue: selectedOption,
                     onChanged: handleRadioValueChange,
                     activeColor: Colors.white,
                   ),
                   RadioListTile<String>(
-                    title: selectedOption == "Shop"
-                        ? const Text('Shop',
-                        style: TextStyle(color: Colors.white))
-                        : const Text(
-                      'Shop',
-                      style: TextStyle(color: Colors.white60),
-                    ),
-                    value: 'Shop',
+                    title: selectedOption == "Sublet"
+                        ? const Text('Sublet', style: TextStyle(color: Colors.white))
+                        : const Text('Sublet', style: TextStyle(color: Colors.white60)),
+                    value: 'Sublet',
                     groupValue: selectedOption,
                     onChanged: handleRadioValueChange,
                     activeColor: Colors.white,
@@ -638,8 +448,53 @@ class _HomePageState extends State<HomeBodyPage> {
     );
   }
 
-  drawer() {
-    return Drawer();
+  Widget _drawer() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          const DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.black,
+            ),
+            child: Column(
+              children: [
+                CircleAvatar(
+                  backgroundImage: AssetImage('assets/avatar.png'),
+                  radius: 40,
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  'Username',
+                  style: TextStyle(color: Colors.white, fontSize: 18.0),
+                ),
+              ],
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.home, color: Colors.white),
+            title: const Text('Home', style: TextStyle(color: Colors.white)),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.person, color: Colors.white),
+            title: const Text('Profile', style: TextStyle(color: Colors.white)),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings, color: Colors.white),
+            title: const Text('Settings', style: TextStyle(color: Colors.white)),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -655,8 +510,7 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   double get maxExtent => child.preferredSize.height;
 
   @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return child;
   }
 

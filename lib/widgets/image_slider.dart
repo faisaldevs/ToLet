@@ -12,20 +12,20 @@ class ImageBuilderPage extends StatefulWidget {
 }
 
 class _ImageBuilderPageState extends State<ImageBuilderPage> {
-  final PageController pageController = PageController(initialPage: 0);
+  // final PageController pageController = PageController(initialPage: 0);
   Timer? timer;
   int _activePage = 0;
   late List _page;
 
-  void startTimer(){
-    timer = Timer.periodic(const Duration(seconds: 3), (timer){
-      if(pageController.page == widget.imagePaths.length-1){
-        pageController. animateToPage(0, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
-      }else{
-        pageController.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
-      }
-    });
-  }
+  // void startTimer(){
+  //   timer = Timer.periodic(const Duration(seconds: 3), (timer){
+  //     if(pageController.page == widget.imagePaths.length-1){
+  //       pageController. animateToPage(0, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
+  //     }else{
+  //       pageController.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
+  //     }
+  //   });
+  // }
 
   @override
   void initState() {
@@ -37,7 +37,15 @@ class _ImageBuilderPageState extends State<ImageBuilderPage> {
         widget.imagePaths[index],
       ),
     );
-    startTimer();
+    // startTimer();
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    // pageController.dispose();
+    // startTimer();
+
   }
 
   @override
@@ -51,7 +59,7 @@ class _ImageBuilderPageState extends State<ImageBuilderPage> {
             width: double.infinity,
             height: MediaQuery.of(context).size.height / 3.5,
             child: PageView.builder(
-              controller: pageController,
+              // controller: pageController,
               onPageChanged: (value) {
                 setState(() {
                   _activePage = value;
@@ -78,9 +86,9 @@ class _ImageBuilderPageState extends State<ImageBuilderPage> {
                     padding: const EdgeInsets.all(4.0),
                     child: InkWell(
                       onTap: () {
-                        pageController.animateToPage(index,
-                            duration: const Duration(milliseconds: 400),
-                            curve: Curves.easeIn);
+                        // pageController.animateToPage(index,
+                        //     duration: const Duration(milliseconds: 400),
+                        //     curve: Curves.easeIn);
                       },
                       child: CircleAvatar(
                         radius: 5,
