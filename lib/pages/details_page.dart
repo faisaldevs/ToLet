@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tolet_app/widgets/image_slider.dart';
 
 class DetailsPage extends StatelessWidget {
   const DetailsPage({super.key});
@@ -16,16 +19,20 @@ class DetailsPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                //Image
+                //Image Slider
                 Container(
                   // height: Get.height / 3,
                   width: Get.width,
                   color: Colors.white60,
                   child: Stack(
                     children: [
-                      Image.asset(
-                        "assets/no1.jpg",
-                        fit: BoxFit.contain,
+                      const ImageBuilderPage(
+                        imagePaths: [
+                          "assets/no1.jpg",
+                          "assets/no2.jpg",
+                          "assets/no3.jpg",
+                          "assets/no4.jpg",
+                        ],
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
@@ -33,28 +40,34 @@ class DetailsPage extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(50)),
-                                color: Colors.black38,
-                              ),
-                              child: const Icon(
-                                Icons.arrow_back,
-                                color: Colors.white,
+                            GestureDetector(
+                              onTap: () => Get.back(),
+                              child: Container(
+                                padding: const EdgeInsets.all(8),
+                                decoration: const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(50)),
+                                  color: Colors.black38,
+                                ),
+                                child: const Icon(
+                                  Icons.arrow_back,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
-                            Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(50)),
-                                color: Colors.black38,
-                              ),
-                              child: const Icon(
-                                Icons.share,
-                                color: Colors.white,
+                            GestureDetector(
+                              onTap: () {},
+                              child: Container(
+                                padding: const EdgeInsets.all(8),
+                                decoration: const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(50)),
+                                  color: Colors.black38,
+                                ),
+                                child: const Icon(
+                                  Icons.share,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ],
@@ -80,7 +93,8 @@ class DetailsPage extends StatelessWidget {
                           ),
                           Text(
                             "sub title",
-                            style: TextStyle(color: Colors.white60, fontSize: 16),
+                            style:
+                                TextStyle(color: Colors.white60, fontSize: 16),
                           ),
                         ],
                       ),
@@ -308,7 +322,8 @@ class DetailsPage extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.all(10),
                             decoration: const BoxDecoration(
-                                color: Colors.black12,),
+                              color: Colors.black12,
+                            ),
                             child: const Row(
                               children: [
                                 Expanded(
@@ -329,7 +344,8 @@ class DetailsPage extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.all(10),
                             decoration: const BoxDecoration(
-                                color: Colors.white10,),
+                              color: Colors.white10,
+                            ),
                             child: const Row(
                               children: [
                                 Expanded(
@@ -432,7 +448,8 @@ class DetailsPage extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.all(10),
                             decoration: const BoxDecoration(
-                              color: Colors.black12,),
+                              color: Colors.black12,
+                            ),
                             child: const Row(
                               children: [
                                 Expanded(
@@ -476,8 +493,9 @@ class DetailsPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 40,),
-            
+                      const SizedBox(
+                        height: 40,
+                      ),
                     ],
                   ),
                 )
@@ -489,3 +507,5 @@ class DetailsPage extends StatelessWidget {
     );
   }
 }
+
+
