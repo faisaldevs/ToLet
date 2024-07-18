@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tolet_app/pages/details_page.dart';
 import 'package:tolet_app/pages/home_page.dart';
+import 'package:tolet_app/pages/login_page.dart';
 import 'package:tolet_app/widgets/image_slider.dart';
 
 void main() {
@@ -14,14 +15,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ScreenUtilInit(
+    return  ScreenUtilInit(
       splitScreenMode: true,
       minTextAdapt: true,
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'ToLet',
         // darkTheme: ThemeData.dark(),
-        home: HomePage(),
+        // home: HomePage(),
+        home: LoginPage(),
         // home: DetailsPage(),
       ),
     );
