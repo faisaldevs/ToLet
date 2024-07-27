@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:tolet_app/utils/app_color.dart';
 import 'package:tolet_app/widgets/auth_button.dart';
 import 'package:tolet_app/widgets/auth_textfield.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController numberController = TextEditingController();
+
   final TextEditingController passwordController = TextEditingController();
+
   bool isObscure = true;
 
   @override
@@ -75,15 +81,16 @@ class LoginPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       TextButton(
-                          onPressed: () => print("Forgot Password"),
-                          child: const Text(
-                            "Forgot ?",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                letterSpacing: 1.5),
-                          ))
+                        onPressed: () => print("Forgot Password"),
+                        child: const Text(
+                          "Forgot ?",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 1.5),
+                        ),
+                      ),
                     ],
                   ),
                   AuthButton(
@@ -92,6 +99,28 @@ class LoginPage extends StatelessWidget {
                       print("Login Button");
                     },
                   ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "already have account? ",
+                        style: TextStyle(color: Colors.white54, fontSize: 16),
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Text(
+                          "sign up ",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
