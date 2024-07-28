@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:tolet_app/pages/home_body_page.dart';
 import 'package:tolet_app/pages/login_page.dart';
 import 'package:tolet_app/pages/profile_page.dart';
-import 'package:tolet_app/pages/search_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:tolet_app/pages/signup_page.dart';
 import 'package:tolet_app/widgets/auth_button.dart';
 import 'package:tolet_app/widgets/auth_textfield.dart';
 
@@ -110,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                         style: TextStyle(color: Colors.white54, fontSize: 16),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () => Get.offAll(SignupPage()),
                         child: Text(
                           "sign up ",
                           style: TextStyle(
