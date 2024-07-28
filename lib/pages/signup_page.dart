@@ -14,6 +14,7 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+
   final TextEditingController nameController = TextEditingController();
 
   // @override
