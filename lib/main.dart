@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tolet_app/pages/home_page.dart';
 import 'package:tolet_app/pages/signup_page.dart';
+import 'package:tolet_app/pages/post_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         title: 'ToLet',
         // darkTheme: ThemeData.dark(),
         // home: SignupPage(),
-        home: HomePage(),
+        home: PostPage(),
       ),
     );
   }

@@ -422,10 +422,10 @@ class _HomePageState extends State<HomeBodyPage> {
                     activeColor: Colors.white,
                   ),
                   RadioListTile<String>(
-                    title: selectedOption == "Office"
-                        ? const Text('Office', style: TextStyle(color: Colors.white))
-                        : const Text('Office', style: TextStyle(color: Colors.white60)),
-                    value: 'Office',
+                    title: selectedOption == "family"
+                        ? const Text('Family', style: TextStyle(color: Colors.white))
+                        : const Text('Family', style: TextStyle(color: Colors.white60)),
+                    value: 'family',
                     groupValue: selectedOption,
                     onChanged: handleRadioValueChange,
                     activeColor: Colors.white,
@@ -435,6 +435,34 @@ class _HomePageState extends State<HomeBodyPage> {
                         ? const Text('Sublet', style: TextStyle(color: Colors.white))
                         : const Text('Sublet', style: TextStyle(color: Colors.white60)),
                     value: 'Sublet',
+                    groupValue: selectedOption,
+                    onChanged: handleRadioValueChange,
+                    activeColor: Colors.white,
+                  ),
+                  RadioListTile<String>(
+                    title: selectedOption == "office"
+                        ? const Text('Office', style: TextStyle(color: Colors.white))
+                        : const Text('Office', style: TextStyle(color: Colors.white60)),
+                    value: 'office',
+                    groupValue: selectedOption,
+                    onChanged: handleRadioValueChange,
+                    activeColor: Colors.white,
+                  ),
+
+                  RadioListTile<String>(
+                    title: selectedOption == "bachelor"
+                        ? const Text('Bachelor', style: TextStyle(color: Colors.white))
+                        : const Text('Bachelor', style: TextStyle(color: Colors.white60)),
+                    value: 'bachelor',
+                    groupValue: selectedOption,
+                    onChanged: handleRadioValueChange,
+                    activeColor: Colors.white,
+                  ),
+                  RadioListTile<String>(
+                    title: selectedOption == "hostel"
+                        ? const Text('Hostel', style: TextStyle(color: Colors.white))
+                        : const Text('Hostel', style: TextStyle(color: Colors.white60)),
+                    value: 'hostel',
                     groupValue: selectedOption,
                     onChanged: handleRadioValueChange,
                     activeColor: Colors.white,
@@ -450,6 +478,8 @@ class _HomePageState extends State<HomeBodyPage> {
 
   Widget _drawer() {
     return Drawer(
+      width: Get.width * .5,
+      backgroundColor: const Color(0xff021526),
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
@@ -460,7 +490,7 @@ class _HomePageState extends State<HomeBodyPage> {
             child: Column(
               children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage('assets/avatar.png'),
+                  backgroundImage: AssetImage('assets/profile.png'),
                   radius: 40,
                 ),
                 SizedBox(height: 8.0),

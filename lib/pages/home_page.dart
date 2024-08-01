@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black87,
-      drawer: drawer(),
+      // drawer: drawer(),
       // drawerScrimColor: Colors.white,
       body: pages[_page],
       bottomNavigationBar: CurvedNavigationBar(
@@ -139,7 +139,7 @@ class _HomePageState extends State<HomePage> {
   //   );
   // }
 
-  drawer() {
-    return const Drawer();
-  }
+  // drawer() {
+  //   return const Drawer();
+  // }
 }
