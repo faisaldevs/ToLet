@@ -166,6 +166,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:tolet_app/widgets/post_page_1.dart';
+import 'package:tolet_app/widgets/post_page_2.dart';
 
 class PostPage extends StatefulWidget {
   const PostPage({super.key});
@@ -220,16 +221,7 @@ class _PostPageState extends State<PostPage> {
               )),
           Step(
               title: const SizedBox.shrink(),
-              content: Container(
-                decoration: BoxDecoration(
-                    color: Colors.green,
-                    border: Border.all(color: Colors.black)),
-                // margin: EdgeInsets.all(10),
-                // padding: EdgeInsets.all(10),
-                height: 100,
-                width: 100,
-                child: Center(child: Text("2")),
-              )),
+              content: PostPageTwo()),
           Step(
               title: const SizedBox.shrink(),
               content: Container(
