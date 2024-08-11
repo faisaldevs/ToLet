@@ -1,4 +1,4 @@
-const dataOne = [
+const postOne = [
   {
     "id" : 1,
     "title" : "Family",

@@ -48,12 +48,15 @@ class _PostPageState extends State<PostPage> {
               title: const SizedBox.shrink(),
               content: PostPageOne(
                 onTap: () {
+
+                  print("hi");
                   print(currentStep);
-                  
+
                   setState(() {
                     currentStep = 1;
                   });
-                }, selectedIndex: selectedIndex,
+                },
+                // selectedIndex: selectedIndex,
               )),
           const Step(
               title: SizedBox.shrink(),
