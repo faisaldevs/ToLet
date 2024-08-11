@@ -3,13 +3,14 @@ import 'package:get/get.dart';
 import 'package:tolet_app/data/local_data.dart';
 
 class PostPageOne extends StatelessWidget {
-  const PostPageOne({super.key, required this.onTap});
+  const PostPageOne({super.key, required this.onTap, required this.selectedIndex});
 
+  final int selectedIndex;
   final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: Get.width * 0.9,
       height: Get.width * 0.9,
       // color: Colors.green,
@@ -37,8 +38,7 @@ class PostPageOne extends StatelessWidget {
                 var t = dataOne[index]["title"].toString();
                 var e = dataOne[index]["logo"].toString();
                 return GestureDetector(
-                  onTap: () {
-                  },
+                  onTap: onTap,
                   child: Card(
 
                     child: Column(
@@ -47,17 +47,17 @@ class PostPageOne extends StatelessWidget {
                         Expanded(
                           flex: 3,
                           child: Image.asset(
-                            "$e",
+                            e,
                             fit: BoxFit.cover,
                           ),
                         ),
-                        const Expanded(
+                         Expanded(
                           flex: 1,
                           child: Padding(
-                            padding: EdgeInsets.all(4.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Text(
-                              'Card Title',
-                              style: TextStyle(fontSize: 14.0),
+                              t,
+                              style: const TextStyle(fontSize: 14.0),
                             ),
                           ),
                         ),
