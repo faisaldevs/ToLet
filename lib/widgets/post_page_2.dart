@@ -189,6 +189,32 @@ class PostPageTwo extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
+
+          Container(
+            width: Get.width,
+            height: 60,
+            decoration: BoxDecoration(
+              border: Border.all(width: 1,color: Colors.black26),
+              borderRadius: const BorderRadius.all(Radius.circular(5))
+            ),
+            child: Column(
+              children: [
+                Text("data"),
+                Expanded(
+                  child: DropdownButton(
+                    items: [
+                      DropdownMenuItem(child: Text("1"),value: 1,),
+                      DropdownMenuItem(child: Text("1"),value: 2,),
+                      // DropdownMenuItem(child: Text("1")),
+                      // DropdownMenuItem(child: Text("1")),
+                      // DropdownMenuItem(child: Text("1")),
+                    ], onChanged: (value) {  },
+                  ),
+                ),
+              ],
+            ),
+          ),
+
           Align(
             alignment: Alignment.bottomCenter,
             child: Row(
