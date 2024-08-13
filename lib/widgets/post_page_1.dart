@@ -39,7 +39,6 @@ class PostPageOne extends StatelessWidget {
                 return GestureDetector(
                   onTap: onTap,
                   child: Card(
-
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
