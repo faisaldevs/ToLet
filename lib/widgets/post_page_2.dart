@@ -200,9 +200,9 @@ class PostPageTwo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(),
-                  child: Text(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: const BoxDecoration(),
+                  child: const Text(
                     "Floor Level",
                     style: TextStyle(
                       fontSize: 18,
@@ -242,19 +242,19 @@ class PostPageTwo extends StatelessWidget {
                             ),
                       ),
                       items: [
-                        DropdownMenuItem(
+                        const DropdownMenuItem(
                           child: Text("1"),
                           value: 1,
                         ),
-                        DropdownMenuItem(
+                        const DropdownMenuItem(
                           child: Text("1"),
                           value: 2,
                         ),
-                        DropdownMenuItem(
+                        const DropdownMenuItem(
                           child: Text("1"),
                           value: 3,
                         ),
-                        DropdownMenuItem(
+                        const DropdownMenuItem(
                           child: Text("1"),
                           value: 4,
                         ),
@@ -279,9 +279,9 @@ class PostPageTwo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(),
-                  child: Text(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: const BoxDecoration(),
+                  child: const Text(
                     "Member Restriction",
                     style: TextStyle(
                       fontSize: 18,
@@ -321,19 +321,19 @@ class PostPageTwo extends StatelessWidget {
                             ),
                       ),
                       items: [
-                        DropdownMenuItem(
+                        const DropdownMenuItem(
                           child: Text("1"),
                           value: 1,
                         ),
-                        DropdownMenuItem(
+                        const DropdownMenuItem(
                           child: Text("1"),
                           value: 2,
                         ),
-                        DropdownMenuItem(
+                        const DropdownMenuItem(
                           child: Text("1"),
                           value: 3,
                         ),
-                        DropdownMenuItem(
+                        const DropdownMenuItem(
                           child: Text("1"),
                           value: 4,
                         ),
@@ -349,7 +349,7 @@ class PostPageTwo extends StatelessWidget {
             height: 10,
           ),
           Container(
-            child: Column(
+            child:  Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
@@ -366,19 +366,16 @@ class PostPageTwo extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(width: 1, color: Colors.white10),
-                            borderRadius: BorderRadius.all(Radius.circular(5))),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(width: 2, color: Colors.black54),
-                            borderRadius: BorderRadius.all(Radius.circular(5))),
-                      ),
-                    ),
-                  ],
+                TextField(
+
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(width: 1, color: Colors.white10),
+                        borderRadius: BorderRadius.all(Radius.circular(5))),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(width: 2, color: Colors.black54),
+                        borderRadius: BorderRadius.all(Radius.circular(5))),
+                  ),
                 ),
               ],
             ),
