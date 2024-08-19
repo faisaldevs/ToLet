@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tolet_app/pages/home_page.dart';
 import 'package:tolet_app/widgets/post_page_1.dart';
 import 'package:tolet_app/widgets/post_page_2.dart';
+import 'package:tolet_app/widgets/post_page_3.dart';
+import 'package:tolet_app/widgets/post_page_4.dart';
 
 class PostPage extends StatefulWidget {
   const PostPage({super.key});
@@ -17,6 +21,7 @@ class _PostPageState extends State<PostPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: Colors.transparent,backgroundColor: Colors.transparent,foregroundColor: Colors.black,
         title: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [Icon(Icons.add), Text("Add Post")],
@@ -24,7 +29,7 @@ class _PostPageState extends State<PostPage> {
         centerTitle: true,
       ),
       body: Stepper(
-        physics: const NeverScrollableScrollPhysics(),
+        physics: const AlwaysScrollableScrollPhysics(),
         connectorThickness: 1,
         elevation: 0,
         type: StepperType.horizontal,
@@ -48,7 +53,6 @@ class _PostPageState extends State<PostPage> {
               title: const SizedBox.shrink(),
               content: PostPageOne(
                 onTap: () {
-
                   print("hi");
                   print(currentStep);
 
@@ -58,32 +62,45 @@ class _PostPageState extends State<PostPage> {
                 },
                 // selectedIndex: selectedIndex,
               )),
-          const Step(
-              title: SizedBox.shrink(),
-              content: PostPageTwo()),
           Step(
               title: const SizedBox.shrink(),
-              content: Container(
-                decoration: BoxDecoration(
-                    color: Colors.green,
-                    border: Border.all(color: Colors.black)),
-                // margin: EdgeInsets.all(10),
-                // padding: EdgeInsets.all(10),
-                height: 100,
-                width: 100,
-                child: const Center(child: Text("3")),
+              content: PostPageTwo(
+                previous: () {
+                  setState(() {
+                    currentStep = 0;
+                  });
+                },
+                next: () {
+                  setState(() {
+                    currentStep = 2;
+                  });
+                },
               )),
           Step(
               title: const SizedBox.shrink(),
-              content: Container(
-                decoration: BoxDecoration(
-                    color: Colors.green,
-                    border: Border.all(color: Colors.black)),
-                // margin: EdgeInsets.all(10),
-                // padding: EdgeInsets.all(10),
-                height: 100,
-                width: 100,
-                child: const Center(child: Text("4")),
+              content: PostPageThree(
+                previous: () {
+                  setState(() {
+                    currentStep = 1;
+                  });
+                },
+                next: () {
+                  setState(() {
+                    currentStep = 3;
+                  });
+                },
+              )),
+          Step(
+              title: const SizedBox.shrink(),
+              content: PostPageFour(
+                previous: () {
+                  setState(() {
+                    currentStep = 2;
+                  });
+                },
+                next: () {
+                  Get.to(const HomePage());
+                },
               )),
         ],
       ),

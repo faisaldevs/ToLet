@@ -106,13 +106,13 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "already have account? ",
                         style: TextStyle(color: Colors.white54, fontSize: 16),
                       ),
                       GestureDetector(
-                        onTap: () => Get.offAll(SignupPage()),
-                        child: Text(
+                        onTap: () => Get.offAll(const SignupPage()),
+                        child: const Text(
                           "sign up ",
                           style: TextStyle(
                               color: Colors.white,

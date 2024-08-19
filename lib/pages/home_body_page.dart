@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tolet_app/pages/details_page.dart';
+import 'package:tolet_app/pages/login_page.dart';
 import 'package:tolet_app/utils/theme/textTheme.dart';
 
 class HomeBodyPage extends StatefulWidget {
@@ -52,6 +53,7 @@ class _HomePageState extends State<HomeBodyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: Colors.black87,
       drawer: _drawer(),
       body: SafeArea(
@@ -328,56 +330,166 @@ class _HomePageState extends State<HomeBodyPage> {
     );
   }
 
+  // void _location(BuildContext context) {
+  //   showModalBottomSheet(
+  //     backgroundColor: Colors.black,
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return Container(
+  //         padding: const EdgeInsets.all(16.0),
+  //         child: SingleChildScrollView(
+  //           child: Column(
+  //             mainAxisSize: MainAxisSize.min,
+  //             crossAxisAlignment: CrossAxisAlignment.start,
+  //             children: <Widget>[
+  //               Row(
+  //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                 children: <Widget>[
+  //                   const Text(
+  //                     'Search Location',
+  //                     style: TextStyle(
+  //                       fontSize: 18.0,
+  //                       color: Colors.white60,
+  //                       fontWeight: FontWeight.bold,
+  //                     ),
+  //                   ),
+  //                   IconButton(
+  //                     icon: const Icon(Icons.close, color: Colors.white60),
+  //                     onPressed: () {
+  //                       Navigator.pop(context);
+  //                     },
+  //                   ),
+  //                 ],
+  //               ),
+  //               const SizedBox(height: 10.0),
+  //                Column(
+  //                 children: <Widget>[
+  //                   Padding(
+  //                     padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+  //                     child: const TextField(
+  //                       decoration: InputDecoration(
+  //                         border: OutlineInputBorder(),
+  //                         focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+  //                         hintStyle: TextStyle(color: Colors.white),
+  //                         hintText: "Division",
+  //                       ),
+  //                     ),
+  //                   ),
+  //                   const SizedBox(height: 10,),
+  //                   Padding(
+  //                     padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+  //                     child: const TextField(
+  //                       decoration: InputDecoration(
+  //                           border: OutlineInputBorder(),
+  //                           focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+  //                           hintStyle: TextStyle(color: Colors.white),
+  //                         hintText: "District"
+  //                       ),
+  //                     ),
+  //                   ),
+  //                   const SizedBox(height: 10,),
+  //                   Padding(
+  //                     padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+  //                     child: const TextField(
+  //                       decoration: InputDecoration(
+  //                           border: OutlineInputBorder(),
+  //                           focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+  //                           hintStyle: TextStyle(color: Colors.white),
+  //                         hintText: "area"
+  //                       ),
+  //                     ),
+  //                   ),
+  //                   const SizedBox(height: 10,),
+  //
+  //                 ],
+  //               ),
+  //             ],
+  //           ),
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
   void _location(BuildContext context) {
     showModalBottomSheet(
       backgroundColor: Colors.black,
       context: context,
       builder: (BuildContext context) {
-        return Container(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  const Text(
-                    'Select Area',
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      color: Colors.white60,
-                      fontWeight: FontWeight.bold,
+        return SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    const Text(
+                      'Search Location',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: Colors.white60,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.close, color: Colors.white60),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10.0),
-              const Column(
-                children: <Widget>[
-                  ListTile(
-                    title: Text('Banani', style: TextStyle(color: Colors.white)),
-                  ),
-                  ListTile(
-                    title: Text('Uttara', style: TextStyle(color: Colors.white)),
-                  ),
-                  ListTile(
-                    title: Text('Mohakhali', style: TextStyle(color: Colors.white)),
-                  ),
-                ],
-              ),
-            ],
+                    IconButton(
+                      icon: const Icon(Icons.close, color: Colors.white60),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10.0),
+                Column(
+                  children: <Widget>[
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 10),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                          hintStyle: TextStyle(color: Colors.white),
+                          hintText: "Division",
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10,),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 10),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                            hintStyle: TextStyle(color: Colors.white),
+                            hintText: "District"
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10,),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                      child: const TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                            hintStyle: TextStyle(color: Colors.white),
+                            hintText: "Area"
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10,),
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },
     );
   }
+
 
   void _category(BuildContext context, String selectedOption, void Function(String?) handleRadioValueChange) {
     showModalBottomSheet(
@@ -512,7 +624,9 @@ class _HomePageState extends State<HomeBodyPage> {
             leading: const Icon(Icons.person, color: Colors.white),
             title: const Text('Profile', style: TextStyle(color: Colors.white)),
             onTap: () {
+
               Navigator.pop(context);
+              // Get.to(const LoginPage());
             },
           ),
           ListTile(

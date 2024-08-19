@@ -1,9 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PostPageTwo extends StatelessWidget {
-  const PostPageTwo({super.key});
+  const PostPageTwo({super.key, required this.previous, required this.next});
+
+  final Function() previous;
+  final Function() next;
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +18,11 @@ class PostPageTwo extends StatelessWidget {
       "Floor",
       "Apartment"
     ];
-    return Container(
-      width: Get.width * 0.9,
-      // height: Get.height * 0.75,
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
       child: Column(
-        // mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Container(
             decoration: BoxDecoration(
@@ -241,22 +243,22 @@ class PostPageTwo extends StatelessWidget {
                             // color: AppTheme.textColorRed,
                             ),
                       ),
-                      items: [
-                        const DropdownMenuItem(
-                          child: Text("1"),
+                      items: const [
+                        DropdownMenuItem(
                           value: 1,
-                        ),
-                        const DropdownMenuItem(
                           child: Text("1"),
+                        ),
+                        DropdownMenuItem(
                           value: 2,
-                        ),
-                        const DropdownMenuItem(
                           child: Text("1"),
+                        ),
+                        DropdownMenuItem(
                           value: 3,
-                        ),
-                        const DropdownMenuItem(
                           child: Text("1"),
+                        ),
+                        DropdownMenuItem(
                           value: 4,
+                          child: Text("1"),
                         ),
                       ],
                       onChanged: (value) {},
@@ -320,22 +322,22 @@ class PostPageTwo extends StatelessWidget {
                             // color: AppTheme.textColorRed,
                             ),
                       ),
-                      items: [
-                        const DropdownMenuItem(
-                          child: Text("1"),
+                      items: const [
+                        DropdownMenuItem(
                           value: 1,
-                        ),
-                        const DropdownMenuItem(
                           child: Text("1"),
+                        ),
+                        DropdownMenuItem(
                           value: 2,
-                        ),
-                        const DropdownMenuItem(
                           child: Text("1"),
+                        ),
+                        DropdownMenuItem(
                           value: 3,
-                        ),
-                        const DropdownMenuItem(
                           child: Text("1"),
+                        ),
+                        DropdownMenuItem(
                           value: 4,
+                          child: Text("1"),
                         ),
                       ],
                       onChanged: (value) {},
@@ -348,37 +350,66 @@ class PostPageTwo extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Container(
-            child:  Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      "▪",
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
-                    ),
-                    Text(
-                      " Size in Squre Feet",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                    ),
-                  ],
-                ),
-                TextField(
-
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide(width: 1, color: Colors.white10),
-                        borderRadius: BorderRadius.all(Radius.circular(5))),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(width: 2, color: Colors.black54),
-                        borderRadius: BorderRadius.all(Radius.circular(5))),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Row(
+                children: [
+                  Text(
+                    "▪",
+                    style:
+                        TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
                   ),
-                ),
-              ],
-            ),
+                  Text(
+                    " Size in Squre Feet",
+                    style:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: Get.width * .3,
+                    child: const TextField(keyboardType: TextInputType.number,
+                      maxLines: 1,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 1, color: Colors.white10),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(5),
+                                bottomLeft: Radius.circular(5))),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.black54),
+                            borderRadius:
+                            BorderRadius.only(
+                                topLeft: Radius.circular(5),
+                                bottomLeft: Radius.circular(5))),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(5),
+                          bottomRight: Radius.circular(5)),
+                      color: Colors.red,
+                    ),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                    // width: 100,
+                    // height: 100,
+                    child: const Text(
+                      "ft",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500, fontSize: 18),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
           const SizedBox(
             height: 10,
@@ -389,7 +420,7 @@ class PostPageTwo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
-                  onTap: () {},
+                  onTap: previous,
                   child: Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
@@ -400,7 +431,7 @@ class PostPageTwo extends StatelessWidget {
                       )),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: next,
                   child: Container(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),
@@ -419,45 +450,3 @@ class PostPageTwo extends StatelessWidget {
     );
   }
 }
-
-//          Container(
-//
-//             child:  Column(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 Row(
-//                   children: [
-//                     Text("▪",style: TextStyle(
-//                         fontSize: 24,fontWeight: FontWeight.w500
-//                     ),),
-//                     Text(" Size in Squre Feet",style: TextStyle(
-//                       fontSize: 18,fontWeight: FontWeight.w500
-//                     ),),
-//                   ],
-//                 ),
-//                 Row(
-//                   children: [
-//                     Expanded(
-//                       child: TextField(
-//                         decoration: InputDecoration(
-//
-//                           suffix: Container(
-//                             width: 150,
-//                             // height: Get.width *.15,
-//                             color: Colors.blueAccent,
-//                           ),
-//                           border: OutlineInputBorder(borderSide: BorderSide(width: 1,color: Colors.white10), borderRadius: BorderRadius.all(Radius.circular(5))),
-//                           focusedBorder: OutlineInputBorder(borderSide: BorderSide(width: 2,color: Colors.black54), borderRadius: BorderRadius.all(Radius.circular(5))),
-//                         ),
-//                       ),
-//                     ),
-//                     Container(
-//                       width: 150,
-//                       height: Get.width *.15,
-//                       color: Colors.blueAccent,
-//                     ),
-//                   ],
-//                 ),
-//               ],
-//             ),
-//           ),

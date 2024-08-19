@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:tolet_app/pages/home_body_page.dart';
 import 'package:tolet_app/pages/login_page.dart';
+import 'package:tolet_app/pages/post_page.dart';
 import 'package:tolet_app/pages/profile_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,9 +15,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _page = 1;
   List pages = [
-    const LoginPage(),
+    const PostPage(),
     const HomeBodyPage(),
-    const ProfilePage(),
+    const LoginPage(),
   ];
   final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
